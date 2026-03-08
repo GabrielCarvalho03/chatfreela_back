@@ -5,7 +5,7 @@ import {
   HttpStatus,
   Post,
 } from "@nestjs/common";
-import { FirebaseConfigService } from "src/firebase/firebase.service";
+import { FirebaseConfigService } from "../firebase/firebase.service";
 import { JwtPayload } from "./Login-user.controller";
 import { JwtService } from "@nestjs/jwt";
 import { v4 as uuid } from "uuid";
