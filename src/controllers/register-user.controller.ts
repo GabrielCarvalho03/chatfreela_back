@@ -9,7 +9,7 @@ import { FirebaseConfigService } from "../firebase/firebase.service";
 import { JwtPayload } from "./Login-user.controller";
 import { JwtService } from "@nestjs/jwt";
 import { v4 as uuid } from "uuid";
-import bcrypt from "bcryptjs";
+import * as bcrypt from "bcryptjs";
 
 export type RegisterFormDto = {
   countryCode: string;
