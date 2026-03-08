@@ -3,6 +3,11 @@
 /node_modules
 /build
 
+
+# JWT Keys
+private-key.pem
+*.pem
+
 # Logs
 logs
 *.log
