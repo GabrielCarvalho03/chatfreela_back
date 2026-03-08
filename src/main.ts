@@ -2,6 +2,8 @@ import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./app.module";
 import { ConfigService } from "@nestjs/config";
 import { Env } from "./env";
+import { ExpressAdapter } from "@nestjs/platform-express";
+import express from "express";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -15,17 +17,28 @@ async function bootstrap() {
   await app.listen(port);
 }
 
-// Cache para Vercel (serverless)
-let cachedApp: any;
+// Para Vercel (serverless)
+let server: any;
 
 export default async function handler(req: any, res: any) {
-  if (!cachedApp) {
-    cachedApp = await NestFactory.create(AppModule);
-    cachedApp.enableCors();
-    await cachedApp.init();
+  if (!server) {
+    const express = require("express");
+    const expressServer = express();
+
+    const app = await NestFactory.create(
+      AppModule,
+      new ExpressAdapter(expressServer),
+    );
+
+    app.enableCors();
+    app.setGlobalPrefix("api"); // opcional: adicionar prefixo
+
+    await app.init();
+
+    server = expressServer;
   }
 
-  return cachedApp.getHttpAdapter().getInstance()(req, res);
+  return server(req, res);
 }
 
 // Para desenvolvimento local
