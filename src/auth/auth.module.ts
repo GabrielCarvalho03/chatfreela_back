@@ -2,10 +2,11 @@ import { Module } from "@nestjs/common";
 import { PassportModule } from "@nestjs/passport";
 import { JwtModule } from "@nestjs/jwt";
 import { ConfigService } from "@nestjs/config";
-import { Env } from "src/env";
-import { LoginController } from "src/controllers/Login-user.controller";
-import { RegisterUserController } from "src/controllers/register-user.controller";
-import { AuthValidateTokenController } from "src/controllers/auth-validate-token.controller";
+import { Env } from "../env";
+import { LoginController } from "../controllers/Login-user.controller";
+import { RegisterUserController } from "../controllers/register-user.controller";
+import { AuthValidateTokenController } from "../controllers/auth-validate-token.controller";
+
 @Module({
   imports: [
     PassportModule,

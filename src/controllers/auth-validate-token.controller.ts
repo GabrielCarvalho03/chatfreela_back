@@ -6,7 +6,7 @@ import {
   Post,
 } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
-import { FirebaseConfigService } from "src/firebase/firebase.service";
+import { FirebaseConfigService } from "../firebase/firebase.service";
 
 @Controller("/auth/validate")
 export class AuthValidateTokenController {

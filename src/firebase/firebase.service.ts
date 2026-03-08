@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import * as admin from "firebase-admin";
-import { Env } from "src/env";
+import { Env } from "../env";
 
 @Injectable()
 export class FirebaseConfigService {
